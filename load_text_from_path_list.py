@@ -30,7 +30,7 @@ class LoadTextFromPathList:
 
     FUNCTION = "load"
 
-    CATEGORY = "HamsterNodes/Loader"
+    CATEGORY = "🐹 HamsterNodes/Loader"
 
     def load(self, text_paths: str):
 

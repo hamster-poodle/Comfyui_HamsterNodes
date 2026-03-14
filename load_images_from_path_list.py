@@ -34,7 +34,7 @@ class LoadImagesFromPathList:
 
     FUNCTION = "load_images"
 
-    CATEGORY = "HamsterNodes/Loader"
+    CATEGORY = "🐹 HamsterNodes/Loader"
 
     def load_images(self, text, generate_dummy_if_empty, normalize_size):
 
