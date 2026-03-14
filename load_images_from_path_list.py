@@ -9,6 +9,7 @@ import numpy as np
 
 
 class LoadImagesFromPathList:
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -28,8 +29,12 @@ class LoadImagesFromPathList:
 
     RETURN_TYPES = ("IMAGE", "INT")
     RETURN_NAMES = ("images", "group_sizes")
+
+    OUTPUT_IS_LIST = (False, True)
+
     FUNCTION = "load_images"
-    CATEGORY = "image/load"
+
+    CATEGORY = "HamsterNodes/Loader"
 
     def load_images(self, text, generate_dummy_if_empty, normalize_size):
 
@@ -43,6 +48,7 @@ class LoadImagesFromPathList:
         # 画像ロード
         # -------------------------------
         for block in text:
+
             if not block or not block.strip():
                 group_sizes.append(0)
                 continue
@@ -51,6 +57,7 @@ class LoadImagesFromPathList:
             count = 0
 
             for path in paths:
+
                 if not os.path.exists(path):
                     continue
 

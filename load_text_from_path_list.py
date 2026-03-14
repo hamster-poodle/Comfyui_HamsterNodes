@@ -1,14 +1,14 @@
 import os
 
+
 class LoadTextFromPathList:
     """
-    入力:
-      text_paths : 改行区切りの txt ファイルパス一覧
+    Input:
+      text_paths : newline-separated list of txt file paths
 
-    出力:
-      combined_text : 全txtを
-        「キャラクター名：内容」
-        の形式で改行結合した STRING
+    Output:
+      combined_text : concatenated text in the format
+        "character_name: content"
     """
 
     @classmethod
@@ -27,10 +27,13 @@ class LoadTextFromPathList:
 
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("combined_text",)
+
     FUNCTION = "load"
-    CATEGORY = "IO/Text"
+
+    CATEGORY = "HamsterNodes/Loader"
 
     def load(self, text_paths: str):
+
         paths = [
             p.strip()
             for p in text_paths.splitlines()
@@ -40,6 +43,7 @@ class LoadTextFromPathList:
         lines = []
 
         for path in paths:
+
             name = os.path.splitext(os.path.basename(path))[0]
 
             if not os.path.exists(path):
@@ -48,7 +52,7 @@ class LoadTextFromPathList:
 
             content = None
 
-            # 日本語Windows想定
+            # try multiple encodings (Windows JP friendly)
             for enc in ("utf-8-sig", "utf-8", "cp932"):
                 try:
                     with open(path, "r", encoding=enc) as f:
